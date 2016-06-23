@@ -22,10 +22,12 @@ const HEROES: Hero[] = [
     selector: 'my-app',
     // heroes template
     template:`
+    <h1> {{ title }}</h1>
     <h2>My Heroes</h2>
-    <ul>
-      <li *ngFor="let hero of heroes" (click)="onSelect(hero)"class="heroes">
-        <span class="badge"> {{ hero.id}}</span> {{ hero.name }}
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)"
+      (click)="onSelect(hero)">
+      <span class="badge"> {{ hero.id}}</span> {{ hero.name }}
       </li>
     </ul>
     <div *ngIf="selectedHero">
