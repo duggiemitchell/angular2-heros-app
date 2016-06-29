@@ -1,21 +1,29 @@
 import { Component, OnInit  } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+
 @Component({
   selector: 'my-dashboard',
   templateUrl: 'app/dashboard.component.html',
+  styleUrls: ['app/dashboard.component.css']
 })
 
 export class DashboardComponent {
   // create a heroes array property
   heroes: Hero[] = [];
   // inject service in constructor
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private router: Router,
+    private heroService: HeroService) {
+    }
   ngOnInit() {
     this.heroService.getHeroes()
-    //  return the 2nd - 5th hero
       .then(heroes => this.heroes = heroes.slice(1, 5));
   }
-  goToDetail() { }
+  gotoDetail(hero: Hero) {
+    let link = ['/detail', hero.id];
+    this.router.navigate(link);
+  }
  }
