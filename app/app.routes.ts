@@ -9,11 +9,11 @@ const routes: RouterConfig = [
     path: '',
     redirectTo: '/dashboard',
     terminal: true
-  }
+  },
   {
     path: 'heroes',
     component: HeroesComponent
-  }
+  },
   {
     path: 'dashboard',
     component: DashboardComponent
